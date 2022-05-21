@@ -53,3 +53,7 @@ hr {
 .row-full {
     background-color: #AAD2FF;
 }
+
+.dataTables_wrapper {
+    padding: 0 !important;
+}
