@@ -1,0 +1,81 @@
+/* header css */
+
+@media screen and (min-width: 993px) and (max-width:1328px) {
+    #dropdownMenuButton12 {
+        font-size: 1vw !important;
+    }
+}
+
+#dashboard ::after {
+    content: none;
+}
+
+#dashboard {
+    background-image: linear-gradient(to right, #2E7FE4, #1515AF);
+}
+
+
+/* body css */
+
+body {
+    background-color: #F0F2F7 !important;
+}
+
+#footer {
+    background-color: #E3E7EB;
+}
+
+#title {
+    color: #3084E7;
+}
+
+.border-color {
+    border-color: #DBDBE0!important;
+}
+
+hr {
+    color: #DBDBE0!important;
+}
+
+
+/* datatables css */
+
+#tableheading {
+    background-color: #AAD2FF !important;
+}
+
+#tablesubheadning {
+    background-color: #DEE2E6 !important;
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td,
+.table-striped>tbody>tr:nth-child(2n+1)>th {
+    background-color: #3ECE2C;
+}
+
+.table-striped>tbody>tr:nth-child(2n)>td,
+.table-striped>tbody>tr:nth-child(2n)>th {
+    background-color: #FABD1F;
+}
+
+.third-table {
+    background-color: #DEE2E6 !important;
+}
+
+
+/* fourth div */
+
+.row-full {
+    background-color: #AAD2FF;
+}
+
+.dataTables_wrapper {
+    padding: 0 !important;
+    background-image: linear-gradient(to right, #2E7FE4, #1515AF);
+}
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
