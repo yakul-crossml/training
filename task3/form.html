@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body class="bg-light">
+    <div class="container mt-3">
+        <h4><span class="text-primary "><strong>|</strong></span>GENERAL JOURNAL</h4>
+    </div>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4 p-0">
+                <select id="disabledSelect form-text" class="form-select rounded-0  ">
+            <option class="text-muted">Select existing template to load...</option>
+          </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-white p-5">
+        <!-- div for form -->
+        <div class="row align-items-center mb-0 mb-md-4 mb-lg-4">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <label class="form-text mb-2">Template Name<span class="text-danger">*</span></label>
+                <input type="text" id="inputPassword6" class="form-control rounded-0" value="Journal_1654894812" aria-describedby="passwordHelpInline">
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"></div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-text mb-2">Currency</label>
+                        <select id="disabledSelect form-text" class="form-select rounded-0  ">
+                            <option class="text-muted">USD</option>
+                          </select>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-text mb-2">AUD Conversion</label>
+                        <input type="email" id="inputPassword6" class="form-control rounded-0" value="1.35890000" aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-0 mb-md-4 mb-lg-4">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <label class="form-text mb-2">Transaction Date:<span class="text-danger">*</span></label>
+                <!-- <input type="date" id="inputPassword6" class="form-control rounded-0" aria-describedby="passwordHelpInline"> -->
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="date" class="form-control" aria-label="Text input with checkbox">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <label class="form-text mb-2">Reference Number:<span class="text-danger">*</span></label>
+                <input type="text" id="inputPassword6" class="form-control rounded-0" aria-describedby="passwordHelpInline">
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <label class="form-text mb-2">Transaction Number:</label>
+                <input type="text" id="inputPassword6" class="form-control rounded-0" aria-describedby="passwordHelpInline">
+            </div>
+        </div>
+        <!-- table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr class="bg-light">
+                    <th scope="col" class="fs-bold" id="tablesubheadning">ACCOUNT</th>
+                    <th scope="col" class="fs-bold" id="tablesubheadning">DEBIT</th>
+                    <th scope="col" class="fs-bold" id="tablesubheadning">CREDIT</th>
+                    <th scope="col" class="fs-bold" id="tablesubheadning">QUANTITY</th>
+                    <th scope="col" class="fs-bold" id="tablesubheadning">DESCRIPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        <select id="select_account" name="select_account" class="form-select border-0">
+                            <option class="text-muted" hidden>Select Account...</option>
+                            <option class="text-muted" value="1-11200">1-11200 - Payroll Cheque Account (AUD)</option>
+                            <option class="text-muted" value="1-11400">1-11400 - Petty Cash (AUD)</option>
+                            <option class="text-muted" value="1-11300">1-11300 - Cash Drawer (AUD)</option>
+                            <option class="text-muted" value="1-11500">1-11500 - Clearing A/c (AUD)</option>
+                            <option class="text-muted" value="1-11800">1-11800 - Undeposited Funds (AUD)</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row py-3">
+            <div class="col-4">
+                <textarea class="form-control rounded-0" placeholder="General Comment..." id="floatingTextarea2" style="height: 100px"></textarea>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-5 text-end">
+                <div class="row">
+                    <div class="col-5">
+                        <label>TOTAL DEBIT:</label>
+                    </div>
+                    <div class="col-7">
+                        <span class="fw-bold">360.00 USD</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <label>TOTAL CREDIT:</label>
+                    </div>
+                    <div class="col-7">
+                        <span class="fw-bold">260.00 USD</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <label>OUT OF BALANCE:</label>
+                    </div>
+                    <div class="col-7">
+                        <span class="fw-bold">-100.00 USD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary rounded-0 me-4">Submit</button>
+        <button type="button" class="btn btn-secondary rounded-0 me-4">Cancel</button>
+        <a href="./index.html"><button type="button" class="btn btn-secondary rounded-0"> Save Template</button></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+<script>
+    $('#select_account').on('change', function(e) {
+        $(".table tbody").append('<tr value=' + $('.table tr').length + '><td>' + $("#select_account option:selected").text() + '</td><td><input type="number" id="debit_input' + $('.table tr').length + '" class="debit_input"></input></td><td><input type="number" id="credit_input' + $('.table tr').length + '" class="credit_input"></input></td><td></td><td></td></tr>');
+        var abd = $('.debit_input')
+
+        $('.debit_input').on('keyup', function(e) {
+            var abcde = []
+
+            var row_no = $(this).closest('tr').index() + 1
+            if ($(this).val() != "") {
+                for (const property in $('.debit_input')) {
+                    console.log(`${property}: ${$('.debit_input')[property]}`);
+                    abcde.push(`${$('.debit_input')[property].value}`)
+                }
+
+
+                function onlyNumbers(array) {
+                    var newArr = [];
+                    array.forEach(function(e) {
+                        if (parseInt(e.charAt(0))) {
+                            newArr.push(parseInt(e));
+                        }
+                    })
+                    return newArr;
+                }
+
+                var abcde = onlyNumbers(abcde);
+                abcde.filter(element => typeof element === 'number');
+                const sum = abcde.reduce((partialSum, a) => partialSum + a, 0);
+                console.log(sum)
+                $('#credit_input' + row_no).attr('disabled', true)
+            } else {
+                $('#credit_input' + row_no).removeAttr('disabled')
+            }
+        })
+        $('.credit_input').on('keyup', function(e) {
+            var abcde = []
+            var row_no = $(this).closest('tr').index() + 1
+            if ($(this).val() != "") {
+                for (const property in $('.credit_input')) {
+                    abcde.push(`${$('.credit_input')[property].value}`)
+                }
+
+
+                function onlyNumbers(array) {
+                    var newArr = [];
+                    array.forEach(function(e) {
+                        if (parseInt(e.charAt(0))) {
+                            newArr.push(parseInt(e));
+                        }
+                    })
+                    return newArr;
+                }
+
+                var abcde = onlyNumbers(abcde);
+                abcde.filter(element => typeof element === 'number');
+                const sum = abcde.reduce((partialSum, a) => partialSum + a, 0);
+                console.log(sum)
+                $('#debit_input' + row_no).attr('disabled', true)
+            } else {
+                $('#debit_input' + row_no).removeAttr('disabled')
+            }
+        })
+    })
+</script>
+
+</html>
