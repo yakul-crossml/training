@@ -108,7 +108,7 @@
                         <label>TOTAL DEBIT:</label>
                     </div>
                     <div class="col-7">
-                        <span class="fw-bold">360.00 USD</span>
+                        <span class="fw-bold" id="debit_amount">360.00 USD</span>
                     </div>
                 </div>
                 <div class="row">
@@ -116,7 +116,7 @@
                         <label>TOTAL CREDIT:</label>
                     </div>
                     <div class="col-7">
-                        <span class="fw-bold">260.00 USD</span>
+                        <span class="fw-bold" id="credit_amount">260.00 USD</span>
                     </div>
                 </div>
                 <div class="row">
@@ -124,11 +124,13 @@
                         <label>OUT OF BALANCE:</label>
                     </div>
                     <div class="col-7">
-                        <span class="fw-bold">-100.00 USD</span>
+                        <span class="fw-bold" id="difference">-100.00 USD</span>
                     </div>
                 </div>
             </div>
         </div>
+        <input type="hidden" id="debit_value">
+        <input type="hidden" id="credit_value">
         <button type="button" class="btn btn-primary rounded-0 me-4">Submit</button>
         <button type="button" class="btn btn-secondary rounded-0 me-4">Cancel</button>
         <a href="./index.html"><button type="button" class="btn btn-secondary rounded-0"> Save Template</button></a>
@@ -151,7 +153,6 @@
                     abcde.push(`${$('.debit_input')[property].value}`)
                 }
 
-
                 function onlyNumbers(array) {
                     var newArr = [];
                     array.forEach(function(e) {
@@ -164,13 +165,23 @@
 
                 var abcde = onlyNumbers(abcde);
                 abcde.filter(element => typeof element === 'number');
-                const sum = abcde.reduce((partialSum, a) => partialSum + a, 0);
-                console.log(sum)
+                const debit_sum = abcde.reduce((partialSum, a) => partialSum + a, 0);
+                // debugger
+                $('#debit_value')[0].value = debit_sum
+                $('#debit_amount')[0].innerText = debit_sum + " USD"
+
+                var difference = parseInt($('#credit_value')[0].value) - parseInt($('#debit_value')[0].value)
+                $('#difference')[0].innerText = difference + " USD"
+                console.log(difference)
+                console.log(debit_sum)
                 $('#credit_input' + row_no).attr('disabled', true)
             } else {
                 $('#credit_input' + row_no).removeAttr('disabled')
             }
         })
+
+
+
         $('.credit_input').on('keyup', function(e) {
             var abcde = []
             var row_no = $(this).closest('tr').index() + 1
@@ -189,11 +200,16 @@
                     })
                     return newArr;
                 }
-
                 var abcde = onlyNumbers(abcde);
                 abcde.filter(element => typeof element === 'number');
-                const sum = abcde.reduce((partialSum, a) => partialSum + a, 0);
-                console.log(sum)
+                const credit_sum = abcde.reduce((partialSum, a) => partialSum + a, 0);
+                $('#credit_value')[0].value = credit_sum
+                var difference = parseInt($('#credit_value')[0].value) - parseInt($('#debit_value')[0].value)
+                $('#credit_amount')[0].innerText = credit_sum + " USD"
+                $('#difference')[0].innerText = difference + " USD"
+                console.log(difference)
+
+                console.log(credit_sum)
                 $('#debit_input' + row_no).attr('disabled', true)
             } else {
                 $('#debit_input' + row_no).removeAttr('disabled')
