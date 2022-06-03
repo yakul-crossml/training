@@ -133,8 +133,8 @@
             <div class="col-8"></div>
             <div class="col-4 bg-light">
                 <div class="container-fluid mb-5 mt-3">
-                    <label>Debit diff: <strong>400:00 </strong></label>
-                    <label>Debit diff: <strong>400:00 </strong></label>
+                    <label>Debit diff: <strong id="debit_diff">400:00 </strong></label>
+                    <label>Debit diff: <strong id="credit_diff">400:00 </strong></label>
                     <label>Debit diff: <strong>400:00 </strong></label>
                 </div>
             </div>
@@ -158,17 +158,27 @@
                 var debit_ammount = $('#table1_debit_amount')[0].value
                 var debit_sum = parseInt($(this).closest('tr').children('td').eq(1).text()) + parseInt(debit_ammount)
                 $('#table1_debit_amount')[0].value = debit_sum
+                var debit_diff = debit_sum - $('#table2_debit_amount')[0].value
+                $('#debit_diff').text(debit_diff)
                     // for credit
                 $(this).closest('tr').children('td').eq(2).text()
                 var credit_ammount = $('#table1_credit_amount')[0].value
                 var credit_sum = parseInt($(this).closest('tr').children('td').eq(2).text()) + parseInt(credit_ammount)
                 $('#table1_credit_amount')[0].value = credit_sum
+                var credit_diff = credit_sum - $('#table2_credit_amount')[0].value
+                $('#credit_diff').text(credit_diff)
             } else {
                 var debit_ammount = $('#table1_debit_amount')[0].value
                 var debit_sum = parseInt(debit_ammount) - parseInt($(this).closest('tr').children('td').eq(1).text())
 
+                $('#table1_debit_amount')[0].value = debit_sum
+                $('#debit_diff').text(debit_sum - $('#table2_debit_amount')[0].value)
+                    // for credit
+
                 var credit_ammount = $('#table1_credit_amount')[0].value
                 var credit_sum = parseInt(credit_ammount) - parseInt($(this).closest('tr').children('td').eq(2).text())
+                $('#table1_credit_amount')[0].value = credit_sum
+                $('#credit_diff').text(credit_sum - $('#table2_credit_amount')[0].value)
             }
         })
         $('.table2_checkbox').on('change', function(e) {
@@ -177,8 +187,6 @@
             var all_checked_box_table1 = $('.table2_checkbox:checkbox:checked')
                 // debugger
             if (this.checked) {
-
-
                 var $id = $(this).closest("tr");
                 $id.index()
                     // for debit
@@ -186,11 +194,16 @@
                 var debit_ammount = $('#table2_debit_amount')[0].value
                 var debit_sum = parseInt($(this).closest('tr').children('td').eq(1).text()) + parseInt(debit_ammount)
                 $('#table2_debit_amount')[0].value = debit_sum
-                    // for credit
+                var debit_diff = $('#table1_debit_amount')[0].value - $('#table2_debit_amount')[0].value
+                $('#debit_diff').text(debit_diff)
+
+                // for credit
                 $(this).closest('tr').children('td').eq(2).text()
                 var credit_ammount = $('#table2_credit_amount')[0].value
                 var credit_sum = parseInt($(this).closest('tr').children('td').eq(2).text()) + parseInt(credit_ammount)
                 $('#table2_credit_amount')[0].value = credit_sum
+                var credit_diff = $('#table1_credit_amount')[0].value - $('#table2_credit_amount')[0].value
+                $('#credit_diff').text(credit_diff)
                 debugger
             } else {
                 var debit_ammount = $('#table2_debit_amount')[0].value
