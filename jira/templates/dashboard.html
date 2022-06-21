@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+<div class="col-8">
+    <table class="table dashboard_table">
+        <thead>
+            <tr>
+                <th scope="col">Project</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Title</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Estimated Time</th>
+                <th scope="col">Assigned To</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var oTable = $('.dashboard_table').dataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{% url 'issues_list_last' %}"
+        });
+    });
+</script>
+{% endblock extra_js %}

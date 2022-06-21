@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% block content %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Project</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'projects' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Assigned To <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{project_form.assigned_to}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Company Name <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{project_form.company_name}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Title <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{project_form.title}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="message-text" class="col-form-label">Description</label>
+                        </div>
+                        <div class="row">
+                            {{project_form.description}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Start Date:</label>
+                        </div>
+                        <div class="row">
+                            <input type="date" class="form-control" name="start_date" id="start_date" placeholder="Start Date">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">End Date:</label>
+                        </div>
+                        <div class="row">
+                            <input type="date" class="form-control" name="end_date" id="end_date" placeholder="End Date">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class='col-10'>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Projects</button>
+    <table class="table project_table" id="project_table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Assigned_to</th>
+                <th scope="col">Start_date</th>
+                <th scope="col">End_date</th>
+                <th scope="col">See Issues</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var oTable = $('.project_table').dataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{% url 'projects_list' %}"
+        });
+    });
+</script>
+{% endblock extra_js %}

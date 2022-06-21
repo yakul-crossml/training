@@ -1,0 +1,130 @@
+{% extends "base.html" %} {% load static %}{% block content %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Project</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'issues' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Project <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.project}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Assigned To <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.assigned_to}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Priority <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.priority}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Title <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.title}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="message-text" class="col-form-label">Message</label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.description}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Status <small class="text-danger">*</small></label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.status}}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Start Date:</label>
+                        </div>
+                        <div class="row">
+                            <input type="date" class="form-control" name="start_date" id="start_date" placeholder="Start Date">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">End Date:</label>
+                        </div>
+                        <div class="row">
+                            <input type="date" class="form-control" name="end_date" id="end_date" placeholder="End Date">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="recipient-name" class="col-form-label">Estimated Time:</label>
+                        </div>
+                        <div class="row">
+                            {{issues_form.estimated_time}}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class='col-10'>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Issues</button>
+    <table class="table" id='issue_table'>
+        <thead>
+            <tr>
+                <th scope="col">Project</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Title</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Estimated_time</th>
+                <th scope="col">Assigned To</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+</div>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        var oTable = $('#issue_table').dataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{% url 'issues_list' %}"
+        });
+    });
+</script>
+<script src="{% static 'custom_js/custom.js' %}"></script>
+{% endblock extra_js %}
