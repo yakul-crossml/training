@@ -9,6 +9,14 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ('assigned_to','company_name', 'title',  'description', 'start_date', 'end_date')
+        widgets = {
+            'assigned_to': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'company_name': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'title': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'description': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'start_date': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'end_date': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+        }
 
     def clean(self):
         cleaned_data = super().clean()
@@ -29,6 +37,17 @@ class IssuesForm(forms.ModelForm):
     class Meta:
         model = Issues
         fields = ('assigned_to','project', 'title', 'description', 'status', 'priority','start_date', 'end_date', 'estimated_time')
+        widgets = {
+            'assigned_to': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'project': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'title': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'description': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'status': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'priority': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'start_date': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'end_date': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+            'estimated_time': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),           
+        }
  
     def clean(self):
         cleaned_data = super().clean()

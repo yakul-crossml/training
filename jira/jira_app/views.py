@@ -40,9 +40,10 @@ class Projects(View):
             }
                      )
     def post(self, request, *args, **kwargs):
-        project_form=ProjectForm(request.POST)
-        project_form.save()
-
+        project_form=ProjectForm(request.POST or None)
+        if request.method=='POST':
+            if project_form.is_valid():
+                project_form.save()
         return render(request,
                       self.template_name,
                       {
@@ -72,10 +73,13 @@ class Issues_fun(View):
             }
                      )
     def post(self, request, *args, **kwargs):
-        issues_form=IssuesForm(request.POST)
-        issues_form.save()
+        if request.method=='POST':
+            issues_form=IssuesForm(request.POST)
+            if issues_form.is_valid():
+                issues_form.save()
         return render(request,
                       self.template_name,
+                         {'issues_form':issues_form}
                      )
 
 

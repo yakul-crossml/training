@@ -3,10 +3,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Project</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <span class="text-danger"> {% for error in project_form.non_field_errors %} {{error}} {% endfor %}</span>
                 <form action="{% url 'projects' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
@@ -14,7 +15,10 @@
                             <label for="recipient-name" class="col-form-label">Assigned To <small class="text-danger">*</small></label>
                         </div>
                         <div class="row">
-                            {{project_form.assigned_to}}
+                            <div class="col-6">
+                                {{project_form.assigned_to}} <span class="text-danger"> {{project_form.errors.assigned_to}}</span>
+                            </div>
+                            <div class="col-6"></div>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -22,7 +26,9 @@
                             <label for="recipient-name" class="col-form-label">Company Name <small class="text-danger">*</small></label>
                         </div>
                         <div class="row">
-                            {{project_form.company_name}}
+                            <div class="col-12">
+                                {{project_form.company_name}} <span class="text-danger">{{project_form.errors.company_name}}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -30,37 +36,45 @@
                             <label for="recipient-name" class="col-form-label">Title <small class="text-danger">*</small></label>
                         </div>
                         <div class="row">
-                            {{project_form.title}}
+                            <div class="col-12">
+                                {{project_form.title}} <span class="text-danger">{{project_form.errors.title}}</span>
+                            </div>
                         </div>
                     </div>
                     <hr>
                     <div class="mb-3">
                         <div class="row">
-                            <label for="message-text" class="col-form-label">Description</label>
+                            <label for="message-text" class="col-form-label">Description <small class="text-danger">*</small></label>
                         </div>
                         <div class="row">
-                            {{project_form.description}}
+                            <div class="col-12">
+                                {{project_form.description}} <span class="text-danger">{{project_form.errors.description}}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="row">
-                            <label for="recipient-name" class="col-form-label">Start Date:</label>
+                            <label for="recipient-name" class="col-form-label">Start Date</label>
                         </div>
                         <div class="row">
-                            <input type="date" class="form-control" name="start_date" id="start_date" placeholder="Start Date">
+                            <div class="col-12">
+                                <input type="date" class="form-control" name="start_date" id="start_date" placeholder="Start Date"> <span class="text-danger"> {{project_form.errors.start_date}}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="row">
-                            <label for="recipient-name" class="col-form-label">End Date:</label>
+                            <label for="recipient-name" class="col-form-label">End Date</label>
                         </div>
                         <div class="row">
-                            <input type="date" class="form-control" name="end_date" id="end_date" placeholder="End Date">
+                            <div class="col-12">
+                                <input type="date" class="form-control" name="end_date" id="end_date" placeholder="End Date"> <span class="text-danger">{{project_form.errors.end_date}}</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer pe-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary me-0">Add</button>
                     </div>
                 </form>
             </div>
@@ -69,7 +83,7 @@
     </div>
 </div>
 <div class='col-10'>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Projects</button>
+    <button type="button" class="btn btn-primary my-3 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Projects</button>
     <table class="table project_table" id="project_table">
         <thead>
             <tr>
@@ -86,11 +100,13 @@
         </tbody>
     </table>
 </div>
-{% endblock %}
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script type="text/javascript">
     $(document).ready(function() {
         var oTable = $('.project_table').dataTable({
+            dom: "<'row'<'col-sm-6'B><'col-sm-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-1 mt-2'l><'col-sm-4 text-left pl-5'i><'col-sm-7 mt-2'p>>",
             "processing": true,
             "serverSide": true,
             "ajax": "{% url 'projects_list' %}"
