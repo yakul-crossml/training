@@ -1,28 +1,32 @@
 {% extends "base.html" %} {% block content %}
-<div class="col-8">
-    <table class="table dashboard_table">
-        <thead>
-            <tr>
-                <th scope="col">Project</th>
-                <th scope="col">Description</th>
-                <th scope="col">Status</th>
-                <th scope="col">Title</th>
-                <th scope="col">Priority</th>
-                <th scope="col">Estimated Time</th>
-                <th scope="col">Assigned To</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+<div class="col-10 my-3">
+    <div class="row table-responsive">
+        <table class="table dashboard_table">
+            <thead>
+                <tr>
+                    <th scope="col">Project</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Estimated Time</th>
+                    <th scope="col">Assigned To</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </div>
-{% endblock %}
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script type="text/javascript">
     $(document).ready(function() {
         var oTable = $('.dashboard_table').dataTable({
+            dom: "<'row'<'col-sm-6'B><'col-sm-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-1 mt-2'l><'col-sm-4 text-left pl-5'i><'col-sm-7 mt-2'p>>",
             "processing": true,
             "serverSide": true,
             "ajax": "{% url 'issues_list_last' %}"
