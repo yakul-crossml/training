@@ -21,21 +21,6 @@
       <div class="row posts">
       </div>
   </div>
-
-  <div class="page-navigation">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul>
-            <li class="current-page"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- Featred Page Ends Here -->
 
 
@@ -150,7 +135,7 @@ $.ajax({
       price =response.category[property].product.price
       image =response.category[property].product.image
       id =response.category[property].id
-      $('.posts').append('<div id='+ id +' class="item low new col-md-4"><div class="featured-item h-75"><img src='+ image +' alt="" class="h-75"><h4>'+ name +'</h4><h6>'+ price +'</h6><button class="Cancelorder btn-primary" name="id" value='+ id +'>Cancel Order</button></div></div>');   
+      $('.posts').append('<div id='+ id +' class="item low new col-md-4"><div class="featured-item h-75"><img src='+ image +' alt="" class="h-75"><h4>'+ name +'</h4><h6>'+ price +' Rs</h6><button class="Cancelorder btn-primary" name="id" value='+ id +'>Cancel Order</button></div></div>');   
       }
       $('.Cancelorder').on('click',function(e){
         $(this).parent().parent().hide()

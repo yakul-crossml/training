@@ -130,7 +130,7 @@
           price = response.category[property].product.price
           image = response.category[property].product.image
           id = response.category[property].product.id
-          $('.posts').append('<div id=' + id + ' class="item low new col-md-4"><div class="featured-item h-75"><img src=' + image + ' alt="" class="h-75"><h4>' + name + '</h4><h6>' + price + '</h6><button class="buybutton btn-primary" name="id" value=' + id + '>Buy now</button></div></div>');
+          $('.posts').append('<div id=' + id + ' class="item low new col-md-4"><div class="featured-item h-75"><img src=' + image + ' alt="" class="h-75"><h4>' + name + '</h4><h6>' + price + ' Rs</h6><button class="buybutton btn-primary" name="id" value=' + id + '>Buy now</button></div></div>');
         }
 
         $('.buybutton').on('click',function(e){
