@@ -38,7 +38,7 @@ def single_projuct(request):
     return render(request, 'single-product.html')
 
 
-
+@login_required
 def order(request):
     return render(request, 'buy.html')
 
